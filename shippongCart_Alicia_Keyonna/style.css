@@ -1,0 +1,26 @@
+ body{
+
+ 	background-color: darkgreen;
+    background-repeat: repeat;
+    background-position: top center;
+    background-attachment: scroll;
+    font-size: 16px;
+    font-style: normal;
+    color: black;
+    font-family: Open Sans Condensed;
+    text-align: left;
+    font-weight: normal;    
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    display: block;
+    border-collapse: separate;
+
+}
+#pic{
+    position: absolute;
+    left: 400px;
+    top: 200px;
+
+}

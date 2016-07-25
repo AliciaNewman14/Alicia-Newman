@@ -1,0 +1,130 @@
+<!Doctype html>
+<html>
+	<head>
+		<link type = "text/css" rel = "stylesheet" href = "Style.css"/>
+
+	</head>
+	<body>
+		<h1><b> Welcome to Barnes & Nobles </h1>
+		<h2> Knowledge is Key</h2>
+		<div id = "pic">
+			<img src="http://web.emerson.edu/undergrad-students-publishing/wp-content/uploads/sites/38/2016/02/A-Thousand-Splendid-Suns.jpg">
+		</div>
+
+<button onClick = "Books()">
+			Add to Cart
+</button>
+<button onClick = "calculateTotal()">
+			Total
+</button>
+
+	<script>
+	var shoppingCart=[];
+	//alert("Welcome to Barns & Noble");
+	
+	
+//this is to see what is n=in the cart
+	var Books = function() 
+	{
+		var useShoppingCart ="Y";
+		while(useShoppingCart !== "N")
+		{
+			addToCart();
+            listCart();
+            removeFromCart();
+            listCart();
+
+            useShoppingCart = prompt("Do you want to continue: Y or N");
+		}
+
+	}
+	
+var addToCart = function()
+{
+	var bookName = prompt("Enter the name of Item or 'finished' to stop");
+			
+			while(bookName != "finished")
+			{		
+				var price = prompt("Enter the price for " + bookName);
+				var iQuantity = prompt("Enter the quantity for " + bookName);
+
+//object containing the name, price and quantity which is the input
+				var items = {};
+				items.name=bookName;
+				items.price=price;
+				items.quantity= iQuantity;
+
+				shoppingCart.push(items);
+				bookName = prompt("enter the name of Item or 'finished' to stop");
+			}
+}
+
+var listCart = function()
+{
+	var list = "";
+	// this loop is to remove items from the cart
+	for(var items in shoppingCart)
+	{
+	     list = list + "name: " + shoppingCart[items].name + " price: " + shoppingCart[items].price
+		+ " quantity: " + shoppingCart[items].quantity + "\n";
+    }
+
+    alert(list);
+
+}
+
+
+
+var removeFromCart= function ()
+{
+    var remove = prompt("do you want to remove an item from the Cart? yes or no");
+    while(remove === "Yes")
+    {
+    	var bookName = prompt("what is the item you want to remove?");
+    	for (var i = 0; i < shoppingCart.length; i++)
+    	{
+    		if (shoppingCart[i].name === bookName)
+    		{
+    		   shoppingCart.splice(i,1);
+    		   alert("removed " + bookName);
+    		   break;
+    	    }
+    	}
+	
+	remove = prompt("Are there any items that you would like to remove? Yes or No");
+    }
+
+}
+
+var calculateTotal = function ()
+{
+	var total = 0;
+	for (var i = 0; i < shoppingCart.length; i++)
+	{
+		total = total + shoppingCart[i].price * shoppingCart[i].quantity;
+	}
+ var tax = total * .075;
+ var totalAndTax = tax + total;
+ 
+ if (totalAndTax > 100)
+ {
+ 	alert("Your total is " + totalAndTax + " you need to use a credit cart");
+
+ }
+else
+{
+	alert("your total is " + totalAndTax + " you have to pay with cash");
+}
+
+
+
+}
+
+
+
+
+
+
+</script>
+</body>
+</html>
